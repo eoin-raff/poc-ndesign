@@ -13,10 +13,16 @@
   "author": "Eoin Rafferty <eora@nuuday.dk>",
   "license": "0BSD",
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.10",
     "gatsby": "^4.0.2",
     "gatsby-link": "^4.24.1",
+    "gatsby-plugin-image": "^2.24.0",
     "gatsby-react-router-scroll": "^5.24.0",
     "gatsby-script": "^1.9.0",
+    "gatsby-source-contentful": "^7.22.0",
+    "gatsby-theme-material-ui": "^5.3.0",
     "node-fetch": "^2.6.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -25,6 +31,7 @@
     "@types/node": "^18.11.2",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "dotenv": "^16.0.3",
     "typescript": "^4.8.4"
   }
 }
