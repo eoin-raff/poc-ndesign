@@ -33,7 +33,12 @@ const BasicSection = ({
   const [leftGrid, rightGrid] = getGrid(gridRules);
 
   return (
-    <Box component="section" py={10} bgcolor="#000000" color="#FFFFFF">
+    <Box
+      component="section"
+      py={10}
+      bgcolor="black"
+      color="common.white"
+    >
       <Container>
         <Grid container spacing={4} {...flexRules}>
           <Grid {...leftGrid}>

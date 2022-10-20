@@ -8,6 +8,19 @@ const theme = createTheme({
       "sans-serif",
     ].join(","),
   },
+  palette: {
+    primary: {
+      main: "#1414FF",
+      dark: "#1414A0",
+    },
+    common: {
+      black: "#1A1A1A",
+      white: "#FFFFFF",
+    },
+    secondary: {
+      main: "#E65050",
+    },
+  },
 });
 
 export default theme;

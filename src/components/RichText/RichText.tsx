@@ -1,8 +1,10 @@
 import React, { ReactElement } from "react";
-import { BLOCKS, MARKS, Node } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES, MARKS, Node } from "@contentful/rich-text-types";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
 import Typography from "@mui/material/Typography";
 import { IRichText } from "./types";
+import { Link } from "gatsby-theme-material-ui";
+import ButtonLink from "../ButtonLink";
 
 const RichText = ({ raw, references }: IRichText): ReactElement => {
   const options = {
@@ -63,6 +65,41 @@ const RichText = ({ raw, references }: IRichText): ReactElement => {
             {text}
           </Typography>
         );
+      },
+      [INLINES.HYPERLINK]: (node: Node, text: string) => {
+        return (
+          <Link href={node.data.uri} rel="noopener noreferrer" target="_blank">
+            {text}
+          </Link>
+        );
+      },
+      [INLINES.ENTRY_HYPERLINK]: (node: Node, text: string) => {
+        return <Link to={node.data.target.slug}>{text}</Link>;
+      },
+      [INLINES.ASSET_HYPERLINK]: (node: Node, text: string) => {
+        return (
+          <Link
+            href={node.data.target.file.url}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {text}
+          </Link>
+        );
+      },
+      [BLOCKS.EMBEDDED_ENTRY]: (node: Node) => {
+        const target = node.data.target;
+        if (!target) {
+          console.warn(`target is null, check GRAPHQL fragment`);
+          return null;
+        }
+        const {
+          contentful_id: _id,
+          sys: _sys,
+          internal: _internal,
+          ...props
+        } = target;
+        return <ButtonLink {...props} />;
       },
     },
     renderText: (text: string) =>

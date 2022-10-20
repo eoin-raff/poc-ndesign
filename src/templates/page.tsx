@@ -37,6 +37,38 @@ export const pageQuery = graphql`
       sections {
         content {
           raw
+          references {
+            ... on ContentfulPage {
+              internal {
+                type
+              }
+              contentful_id
+              slug
+            }
+            ... on ContentfulAsset {
+              internal {
+                type
+              }
+              __typename
+              contentful_id
+              file {
+                url
+              }
+            }
+            ... on ContentfulButton {
+              contentful_id
+              internal {
+                type
+              }
+              label
+              internalPage {
+                slug
+              }
+              href
+              variant
+              color
+            }
+          }
         }
         media {
           file {
