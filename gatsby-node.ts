@@ -1,4 +1,4 @@
-import { CreatePagesArgs } from "gatsby";
+import { CreatePagesArgs, CreateSchemaCustomizationArgs } from "gatsby";
 import path from "path";
 
 interface IPageQuery {
@@ -9,6 +9,22 @@ interface IPageQuery {
     }[];
   };
 }
+
+export const createSchemaCustomization = ({
+  actions,
+}: CreateSchemaCustomizationArgs) => {
+  const { createTypes } = actions;
+
+  const typeDefinitions = `
+  type ContentfulButton implements Node {
+    internalPage: ContentfulPage @link(from: "internalPage___NODE")
+    href: String
+    color: String
+  }
+  `;
+
+  createTypes(typeDefinitions);
+};
 
 export const createPages = async ({ actions, graphql }: CreatePagesArgs) => {
   actions.createPage({
