@@ -1,13 +1,14 @@
-import { config as dotEnvConfig } from "dotenv";
-import type { GatsbyConfig } from "gatsby";
+import { config as dotEnvConfig } from "dotenv"
+import type { GatsbyConfig } from "gatsby"
 
 dotEnvConfig({
   path: `.env`,
-});
+})
 
 const config: GatsbyConfig = {
   siteMetadata: {
     title: "POC Netdesign",
+    siteUrl: `https://netdesign.dk/`,
   },
   plugins: [
     {
@@ -33,8 +34,17 @@ const config: GatsbyConfig = {
         },
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     `gatsby-plugin-image`,
   ],
-};
+}
 
-export default config;
+export default config

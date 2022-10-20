@@ -1,11 +1,11 @@
-import { Button } from "gatsby-theme-material-ui";
-import React from "react";
+import { Button } from "gatsby-theme-material-ui"
+import React from "react"
 
 interface IButtonLink {
-  label: string;
-  internalPage?: { slug: string };
-  href?: string;
-  variant: "contained" | "outlined";
+  label: string
+  internalPage?: { slug: string }
+  href?: string
+  variant: "contained" | "outlined"
   color?:
     | "inherit"
     | "primary"
@@ -14,7 +14,7 @@ interface IButtonLink {
     | "error"
     | "info"
     | "warning"
-    | undefined;
+    | undefined
 }
 
 const ButtonLink = ({
@@ -24,11 +24,13 @@ const ButtonLink = ({
   variant,
   color,
 }: IButtonLink) => {
-  const isInternal = !!internalPage?.slug;
+  const isInternal = !!internalPage?.slug
+
+  console.log(variant)
 
   if (!isInternal && !href) {
-    console.warn("Button Link needs either an internal page or href");
-    return <></>;
+    console.warn("Button Link needs either an internal page or href")
+    return <></>
   }
 
   return (
@@ -39,7 +41,7 @@ const ButtonLink = ({
     >
       {label}
     </Button>
-  );
-};
+  )
+}
 
-export default ButtonLink;
+export default ButtonLink
