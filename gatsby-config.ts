@@ -9,6 +9,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: "POC Netdesign",
     siteUrl: `https://netdesign.dk/`,
+    author: "TDC Erhverv",
   },
   plugins: [
     {
